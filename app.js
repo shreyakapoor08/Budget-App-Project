@@ -1,6 +1,7 @@
 //BUDGET CONTROLLER
-var budgetController = (function() {
-
+//all the three modules work independently
+var budgetController = (function() { //immediately invoked function iif
+//iify allows us to create data privacy it makes a new scope which is hidden from outside scope
     var Expense = function(id, description, value) {
         this.id = id;
         this.description = description;
@@ -44,7 +45,7 @@ var budgetController = (function() {
     };
 
     var data = {
-        allItems: {
+        allItems: { //empty array where we can store everything
             exp: [],
             inc: []
         },
@@ -177,7 +178,7 @@ var budgetController = (function() {
 //UI CONTROLLER
 var UIController = (function() {
 
-    var DOMstrings = {
+    var DOMstrings = { //all the strings are stored here
         inputType: '.add__type',
         inputDescription: '.add__description',
         inputValue: '.add__value',
@@ -232,7 +233,7 @@ var UIController = (function() {
     return {
         getInput: function() {
             return {
-                type: document.querySelector(DOMstrings.inputType).value, //will be either inc or exp
+                type: document.querySelector(DOMstrings.inputType).value, //will be either inc or exp, read value of the type
                 description: document.querySelector(DOMstrings.inputDescription).value,
                 value: parseFloat(document.querySelector(DOMstrings.inputValue).value)
             };
@@ -351,6 +352,7 @@ var UIController = (function() {
 
 
 //GLOBAL APP CONTROLLER
+//it will create a link btw the other two module
 var controller = (function(budgetCtrl, UICtrl) {
 
     var setupEventListeners =  function() {
